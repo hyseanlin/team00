@@ -20,8 +20,8 @@ class CreatePlayersTable extends Migration
             $table->date('birthdate')->nullable()->default('1946-01-01')->comment('生日');
             $table->date('onboarddate')->nullable()->comment('到職日');
             $table->string('position')->comment('位置');
-            $table->double('height')->unsiged()->default(165)->comment('身高');
-            $table->double('weight')->unsiged()->default(80)->comment('體重');
+            $table->double('height')->unsigned()->default(165)->comment('身高');
+            $table->double('weight')->unsigned()->default(80)->comment('體重');
             $table->tinyInteger('year')->unsigned()->comment('年資');
             $table->string('nationality')->default('美國')->comment('國籍');
             $table->timestamps();
