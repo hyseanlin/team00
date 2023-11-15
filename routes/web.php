@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PlayersController;
+use App\Http\Controllers\TeamsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('players', [PlayersController::class, 'index'])->name('players.index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('teams', [TeamsController::class, 'index'])->name('teams.index');
