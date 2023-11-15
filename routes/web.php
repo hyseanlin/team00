@@ -14,6 +14,10 @@ use App\Http\Controllers\TeamsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', function () {
+    return redirect('players');
+});
 Route::get('players', [PlayersController::class, 'index'])->name('players.index');
 
 Route::get('teams', [TeamsController::class, 'index'])->name('teams.index');
