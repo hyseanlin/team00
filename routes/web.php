@@ -15,6 +15,7 @@ use App\Http\Controllers\TeamsController;
 |
 */
 
+// 註解一下
 Route::get('/', function () {
     return redirect('players');
 });
