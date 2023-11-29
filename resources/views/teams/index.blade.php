@@ -1,10 +1,9 @@
-<html>
 
-<head>
-    <title>列出所有球隊</title>
-</head>
+@extends('app')
 
-<body>
+@section('title', 'NBA網站 - 列出所有球隊')
+
+@section('nba_contents')
 <h1>列出所有球隊</h1>
 
 <table>
@@ -32,8 +31,4 @@
     @endfor
 <table>
 
-
-</body>
-</html>
-
-
+@endsection
