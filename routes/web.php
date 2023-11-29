@@ -19,6 +19,11 @@ use App\Http\Controllers\TeamsController;
 Route::get('/', function () {
     return redirect('players');
 });
+// 顯示顯示所有球隊資料
 Route::get('players', [PlayersController::class, 'index'])->name('players.index');
+// 顯示單一球隊資料
+Route::get('players/{id}', [PlayersController::class, 'show'])->where('id', '[0-9]+')->name('players.show');
+// 修改單一球隊表單
+Route::get('players/{id}/edit', [PlayersController::class, 'edit'])->where('id', '[0-9]+')->name('players.edit');
 
 Route::get('teams', [TeamsController::class, 'index'])->name('teams.index');

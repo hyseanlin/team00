@@ -14,8 +14,10 @@ class PlayersController extends Controller
      */
     public function index()
     {
-        //
-        return Player::all()->toArray();
+        // 從 Model 拿資料
+        $p = Player::all()->toArray();
+        // 把資料送給 view
+        return view('players.index')->with('players', $p);
     }
 
     /**
@@ -58,7 +60,7 @@ class PlayersController extends Controller
      */
     public function edit($id)
     {
-        //
+        return Player::findOrFail($id)->toArray();
     }
 
     /**
