@@ -14,7 +14,10 @@ class TeamsController extends Controller
      */
     public function index()
     {
-        return Team::all()->toArray();
+        // 從 Model 拿資料
+        $t = Team::all()->toArray();
+        // 把資料送給 view
+        return view('teams.index')->with('teams', $t);
     }
 
     /**
@@ -46,7 +49,7 @@ class TeamsController extends Controller
      */
     public function show($id)
     {
-        //
+        return Team::findOrFail($id)->toArray();
     }
 
     /**
@@ -57,7 +60,7 @@ class TeamsController extends Controller
      */
     public function edit($id)
     {
-        //
+        return Team::findOrFail($id)->toArray();
     }
 
     /**
