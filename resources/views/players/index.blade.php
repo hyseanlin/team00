@@ -1,7 +1,9 @@
 
 @extends('app')
 
-@section('title', 'NBA網站 - 列出所有球員')
+@section('title', 'NBA 網站 - 列出所有球員')
+
+@section('nba_theme', 'NBA 球員')
 
 @section('nba_contents')
 <h1>列出所有球員</h1>
