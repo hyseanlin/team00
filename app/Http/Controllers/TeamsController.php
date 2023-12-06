@@ -52,8 +52,9 @@ class TeamsController extends Controller
 
         // 從 Model 拿資料
         $team = Team::findOrFail($id);
+        $players = $team->players;
         // 把資料送給 view
-        return view('teams.show')->with('team', $team);    
+        return view('teams.show', ['team'=>$team, 'players'=>$players]);    
     }
 
     /**
@@ -87,6 +88,8 @@ class TeamsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $team = Team::findOrFail($id);
+        $team->delete();
+        return redirect('teams');
     }
 }
