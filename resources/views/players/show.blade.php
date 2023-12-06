@@ -5,6 +5,7 @@
 
 @section('nba_theme', '您所選取的球員資料')
 
+<h1>列出所有球員</h1>
 @section('nba_contents')
 球員編號：{{ $player->id }}<br/>
 球員姓名：{{ $player->name }}<br/>

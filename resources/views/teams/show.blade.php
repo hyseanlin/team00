@@ -4,6 +4,7 @@
 
 @section('nba_theme', '您所選取的球隊資料')
 
+<h1>列出所有球隊</h1>
 @section('nba_contents')
 球隊編號：{{ $team->id }}<br/>
 球隊名字：{{ $team->name }}<br/>
