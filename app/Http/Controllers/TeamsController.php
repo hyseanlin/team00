@@ -28,6 +28,7 @@ class TeamsController extends Controller
     public function create()
     {
         //
+        return view('teams.create');
     }
 
     /**
@@ -65,7 +66,8 @@ class TeamsController extends Controller
      */
     public function edit($id)
     {
-        return Team::findOrFail($id)->toArray();
+        $team = Team::findOrFail($id);
+        return view('teams.edit', ['team'=>$team]);
     }
 
     /**
