@@ -41,5 +41,5 @@
             <td>{{ $player->nationality }}</td>
         </tr>
     @endforeach
-<table>
+</table>
 @endsection

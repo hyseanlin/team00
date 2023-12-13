@@ -39,6 +39,6 @@
             </td>
         </tr>
     @endforeach
-<table>
+</table>
 
 @endsection
