@@ -31,8 +31,8 @@ Route::delete('players/delete/{id}', [PlayersController::class, 'destroy'])->whe
 Route::get('players/create', [PlayersController::class, 'create'])->name('players.create');
 // 修改球員表單
 Route::get('players/{id}/edit', [PlayersController::class, 'edit'])->where('id', '[0-9]+')->name('players.edit');
-// 修改球員表單
-Route::get('players/update/{id}', [PlayersController::class, 'update'])->where('id', '[0-9]+')->name('players.update');
+// 修改球員資料
+Route::patch('players/update/{id}', [PlayersController::class, 'update'])->where('id', '[0-9]+')->name('players.update');
 
 // 顯示顯示所有球隊資料
 Route::get('teams', [TeamsController::class, 'index'])->name('teams.index');
@@ -46,5 +46,5 @@ Route::delete('teams/delete/{id}', [TeamsController::class, 'destroy'])->where('
 Route::get('teams/create', [TeamsController::class, 'create'])->name('teams.create');
 // 修改球隊表單
 Route::get('teams/{id}/edit', [TeamsController::class, 'edit'])->where('id', '[0-9]+')->name('teams.edit');
-// 修改球隊表單
-Route::get('teams/update/{id}', [TeamsController::class, 'update'])->where('id', '[0-9]+')->name('teams.update');
+// 修改球隊資料
+Route::patch('teams/update/{id}', [TeamsController::class, 'update'])->where('id', '[0-9]+')->name('teams.update');
