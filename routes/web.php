@@ -33,6 +33,8 @@ Route::get('players/create', [PlayersController::class, 'create'])->name('player
 Route::get('players/{id}/edit', [PlayersController::class, 'edit'])->where('id', '[0-9]+')->name('players.edit');
 // 修改球員資料
 Route::patch('players/update/{id}', [PlayersController::class, 'update'])->where('id', '[0-9]+')->name('players.update');
+// 儲存新球員資料
+Route::post('players/store', [PlayersController::class, 'store'])->where('id', '[0-9]+')->name('players.store');
 
 // 顯示顯示所有球隊資料
 Route::get('teams', [TeamsController::class, 'index'])->name('teams.index');

@@ -4,7 +4,7 @@
 </div>
 <div class="form-group">
     {!! Form::label('tid', '所屬球隊：') !!}
-    <!-- 待設計一下拉式選單 -->
+    {!! Form::select('tid', $teams, $teamSelected, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('birthdate','出生年月日:') !!}
