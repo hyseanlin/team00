@@ -50,3 +50,5 @@ Route::get('teams/create', [TeamsController::class, 'create'])->name('teams.crea
 Route::get('teams/{id}/edit', [TeamsController::class, 'edit'])->where('id', '[0-9]+')->name('teams.edit');
 // 修改球隊資料
 Route::patch('teams/update/{id}', [TeamsController::class, 'update'])->where('id', '[0-9]+')->name('teams.update');
+// 儲存新球隊資料
+Route::post('teams/store', [TeamsController::class, 'store'])->name('teams.store');
