@@ -27,6 +27,8 @@ Route::get('players/{id}', [PlayersController::class, 'show'])->where('id', '[0-
 Route::get('players/{id}/edit', [PlayersController::class, 'edit'])->where('id', '[0-9]+')->name('players.edit');
 // 刪除單一球員資料
 Route::delete('players/delete/{id}', [PlayersController::class, 'destroy'])->where('id', '[0-9]+')->name('players.destroy');
+// 新增球員表單
+Route::get('players/create', [PlayersController::class, 'create'])->name('players.create');
 
 // 顯示顯示所有球隊資料
 Route::get('teams', [TeamsController::class, 'index'])->name('teams.index');
@@ -36,3 +38,5 @@ Route::get('teams/{id}', [TeamsController::class, 'show'])->where('id', '[0-9]+'
 Route::get('teams/{id}/edit', [TeamsController::class, 'edit'])->where('id', '[0-9]+')->name('teams.edit');
 // 刪除單一球隊及旗下球員資料
 Route::delete('teams/delete/{id}', [TeamsController::class, 'destroy'])->where('id', '[0-9]+')->name('teams.destroy');
+// 新增球隊表單
+Route::get('teams/create', [TeamsController::class, 'create'])->name('players.create');
