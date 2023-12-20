@@ -26,7 +26,7 @@ class CreatePlayerRequest extends FormRequest
         return [
             'name' => 'required|string|min:2|max:191',
             'tid' => 'required',
-            'birthdate' => 'nullable',
+            'birthdate' => 'nullable|dateearlier:onboarddate',
             'onboarddate' => 'nullable',
             'position' => 'required|string|min:2|max:191',
             'height' => 'required|numeric|min:160|max:250',
@@ -55,6 +55,7 @@ class CreatePlayerRequest extends FormRequest
             "year.max" => "球員年資 範圍必須介於0~20之間",
             "nationality.required" => "球員國籍 為必填",
             "weight.lt" => "身高 必須大於 體重",
+            "dateearlier" => "出生年月日 必須早於 到職年月日",
         ];
     }    
 }
