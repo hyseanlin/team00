@@ -39,6 +39,21 @@ class TeamsController extends Controller
      */
     public function store(CreateTeamRequest $request)
     {
+        $request->validate([
+            'name' => 'required|string|min:2|max:100',
+            'zone' => 'required|string|min:2|max:100',
+            'city' => 'required|string|min:2|max:100',
+            'home' => 'required|string|min:2|max:100'
+        ], [
+            "name.required" => "球隊名稱 為必填",
+            "name.min" => "球隊名稱 至少需2個字元",
+            "zone.required" => "分區 為必填",
+            "zone.min" => "分區 至少需2個字元",
+            "city.required" => "城市 為必填",
+            "city.min" => "城市 至少需2個字元",
+            "home.required" => "主場 為必填",
+            "home.min" => "主場 至少需2個字元",
+        ]);
 
         $name = $request->input('name');
         $city = $request->input('city');
@@ -92,6 +107,22 @@ class TeamsController extends Controller
      */
     public function update(CreateTeamRequest $request, $id)
     {
+        $request->validate([
+            'name' => 'required|string|min:2|max:100',
+            'zone' => 'required|string|min:2|max:100',
+            'city' => 'required|string|min:2|max:100',
+            'home' => 'required|string|min:2|max:100'
+        ], [
+            "name.required" => "球隊名稱 為必填",
+            "name.min" => "球隊名稱 至少需2個字元",
+            "zone.required" => "分區 為必填",
+            "zone.min" => "分區 至少需2個字元",
+            "city.required" => "城市 為必填",
+            "city.min" => "城市 至少需2個字元",
+            "home.required" => "主場 為必填",
+            "home.min" => "主場 至少需2個字元",
+        ]);
+
 
         $team = Team::findOrFail($id);
 
