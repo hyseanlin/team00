@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Player;
 use App\Models\Team;
+use App\Http\Requests\CreatePlayerRequest;
 
 class PlayersController extends Controller
 {
@@ -38,7 +38,7 @@ class PlayersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePlayerRequest $request)
     {
         $name = $request->input('name');
         $tid = $request->input('tid');
@@ -94,7 +94,7 @@ class PlayersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreatePlayerRequest $request, $id)
     {
         $player = Player::findOrFail($id);
 
