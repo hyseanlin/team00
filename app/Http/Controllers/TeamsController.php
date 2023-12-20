@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 use App\Models\Team;
-use App\Http\Requests\CreateTeamRequest;
 
 class TeamsController extends Controller
 {
@@ -37,7 +36,7 @@ class TeamsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateTeamRequest $request)
+    public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|min:2|max:100',
@@ -105,7 +104,7 @@ class TeamsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CreateTeamRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'name' => 'required|string|min:2|max:100',
