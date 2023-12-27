@@ -23,6 +23,8 @@ Route::get('/', function () {
 Route::get('players', [PlayersController::class, 'index'])->name('players.index');
 // 顯示資深球員資料
 Route::get('players/senior', [PlayersController::class, 'senior'])->name('players.senior');
+// 顯示資深球員資料
+Route::get('players/birthday', [PlayersController::class, 'birthday'])->name('players.birthday');
 // 選定位置查詢球員
 Route::get('players/position', [PlayersController::class, 'position'])->name('players.position');
 // 選定國家查詢球員

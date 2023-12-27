@@ -42,6 +42,20 @@ class PlayersController extends Controller
                                       'selectedNationality'=>null]);
     }
 
+    public function birthday()
+    {
+        // 從 Model 拿特定條件下的資料
+        $players = Player::birthday()->paginate(25);
+        $positions = Player::allPositions()->pluck('players.position', 'players.position');
+        $nationalities = Player::allNationalities()->pluck('players.nationality', 'players.nationality');
+        // 把資料送給 view
+        return view('players.index', ['players' => $players,
+                                      'positions'=>$positions,
+                                      'selectedPosition'=>null,
+                                      'nationalities'=>$nationalities,
+                                      'selectedNationality'=>null]);
+    }
+
     public function position(Request $request)
     {
         $players = Player::position($request->input('pos'))->paginate(25);

@@ -10,6 +10,7 @@
     <a href="{{ route('players.create') }} ">新增球員</a>
     <a href="{{ route('players.index') }} ">所有球員</a>
     <a href="{{ route('players.senior') }} ">資深球員</a>
+    <a href="{{ route('players.birthday') }} ">本月生日球員</a>
     <form action="{{ url('players/position') }}" method='GET'>
         {!! Form::label('pos', '選取位置：') !!}
         {!! Form::select('pos', $positions, $selectedPosition, ['class' => 'form-control']) !!}
