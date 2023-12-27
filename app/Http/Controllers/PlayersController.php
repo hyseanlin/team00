@@ -19,8 +19,13 @@ class PlayersController extends Controller
         // 從 Model 拿資料
         $players = Player::paginate(25);
         $positions = Player::allPositions()->pluck('players.position', 'players.position');
+        $nationalities = Player::allNationalities()->pluck('players.nationality', 'players.nationality');
         // 把資料送給 view
-        return view('players.index', ['players' => $players, 'positions'=>$positions, 'selectedPosition'=>null]);
+        return view('players.index', ['players' => $players,
+                                      'positions'=>$positions,
+                                      'selectedPosition'=>null,
+                                      'nationalities'=>$nationalities,
+                                      'selectedNationality'=>null]);
     }
 
     public function senior()
@@ -28,8 +33,13 @@ class PlayersController extends Controller
         // 從 Model 拿特定條件下的資料
         $players = Player::senior()->paginate(25);
         $positions = Player::allPositions()->pluck('players.position', 'players.position');
+        $nationalities = Player::allNationalities()->pluck('players.nationality', 'players.nationality');
         // 把資料送給 view
-        return view('players.index', ['players' => $players, 'positions'=>$positions, 'selectedPosition'=>null]);
+        return view('players.index', ['players' => $players,
+                                      'positions'=>$positions,
+                                      'selectedPosition'=>null,
+                                      'nationalities'=>$nationalities,
+                                      'selectedNationality'=>null]);
     }
 
     public function position(Request $request)
@@ -37,7 +47,25 @@ class PlayersController extends Controller
         $players = Player::position($request->input('pos'))->paginate(25);
         $positions = Player::allPositions()->pluck('players.position', 'players.position');
         $selectedPosition = $request->input('pos');
-        return view('players.index', ['players' => $players, 'positions'=>$positions, 'selectedPosition'=>$selectedPosition]);
+        $nationalities = Player::allNationalities()->pluck('players.nationality', 'players.nationality');
+        return view('players.index', ['players' => $players,
+                                      'positions'=>$positions,
+                                      'selectedPosition'=>$selectedPosition,
+                                      'nationalities'=>$nationalities,
+                                      'selectedNationality'=>null]);
+    }
+
+    public function nationality(Request $request)
+    {
+        $players = Player::nationality($request->input('nationality'))->paginate(25);
+        $positions = Player::allPositions()->pluck('players.position', 'players.position');
+        $selectedNationality = $request->input('nationality');
+        $nationalities = Player::allNationalities()->pluck('players.nationality', 'players.nationality');
+        return view('players.index', ['players' => $players,
+                                      'positions'=>$positions,
+                                      'selectedPosition'=>null,
+                                      'nationalities'=>$nationalities,
+                                      'selectedNationality'=>$selectedNationality]);
     }    
     /**
      * Show the form for creating a new resource.

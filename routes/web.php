@@ -25,6 +25,8 @@ Route::get('players', [PlayersController::class, 'index'])->name('players.index'
 Route::get('players/senior', [PlayersController::class, 'senior'])->name('players.senior');
 // 選定位置查詢球員
 Route::get('players/position', [PlayersController::class, 'position'])->name('players.position');
+// 選定國家查詢球員
+Route::get('players/nationality', [PlayersController::class, 'nationality'])->name('players.nationality');
 // 顯示單一球員資料
 Route::get('players/{id}', [PlayersController::class, 'show'])->where('id', '[0-9]+')->name('players.show');
 // 修改單一球員表單

@@ -16,6 +16,12 @@
         <input class="btn btn-default" type="submit" value="查詢" />
         @csrf
     </form>    
+    <form action="{{ url('players/nationality') }}" method='GET'>
+        {!! Form::label('nationality', '選取國家：') !!}
+        {!! Form::select('nationality', $nationalities, $selectedNationality, ['class' => 'form-control']) !!}
+        <input class="btn btn-default" type="submit" value="查詢" />
+        @csrf
+    </form>    
 </div>
 
 <table>

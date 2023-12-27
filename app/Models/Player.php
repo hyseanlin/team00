@@ -40,4 +40,14 @@ class Player extends Model
     {
         return $query->where('position', '=', $pos);
     }    
+
+    public function scopeAllNationalities($query)
+    { 
+        return $query->select('nationality')->groupBy('nationality');
+    }
+
+    public function scopeNationality($query, $nationality)
+    {
+        return $query->where('nationality', '=', $nationality);
+    }    
 }
