@@ -29,6 +29,6 @@ class Team extends Model
 
     public function scopeZone($query, $zone)
     {
-        $query->where('zone', '=', $zone);
+        return $query->where('zone', '=', $zone);
     }
 }

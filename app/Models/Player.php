@@ -28,6 +28,6 @@ class Player extends Model
 
     public function scopeSenior($query)
     {
-        $query->where('year', '>', 10)->orderBy('year', 'asc');
+        return $query->where('year', '>', 10)->orderBy('year', 'asc');
     }
 }
