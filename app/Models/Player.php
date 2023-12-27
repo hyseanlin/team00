@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Player extends Model
 {
@@ -50,4 +51,15 @@ class Player extends Model
     {
         return $query->where('nationality', '=', $nationality);
     }    
+
+    public function scopeBirthdayMonth($query, $month_start, $month_end)
+    {
+        return $query->whereMonth('birthdate', '>=', $month_start)
+                     ->whereMonth('birthdate', '<=', $month_end);
+    }
+    public function scopeBirthday($query)
+    {
+        return $query->whereMonth('birthdate', '=', Carbon::today()->month);
+    }
+
 }
