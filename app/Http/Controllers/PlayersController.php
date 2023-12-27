@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Player;
 use App\Models\Team;
 use App\Http\Requests\CreatePlayerRequest;
+use Illuminate\Http\Request;
 
 class PlayersController extends Controller
 {
@@ -17,19 +18,26 @@ class PlayersController extends Controller
     {
         // 從 Model 拿資料
         $players = Player::all();
+        $positions = Player::allPositions()->pluck('players.position', 'players.position');
         // 把資料送給 view
-        return view('players.index')->with('players', $players);
+        return view('players.index', ['players' => $players, 'positions'=>$positions]);
     }
 
     public function senior()
     {
         // 從 Model 拿特定條件下的資料
         $players = Player::senior()->get();
-       
+        $positions = Player::allPositions()->pluck('players.position', 'players.position');
         // 把資料送給 view
-        return view('players.index')->with('players', $players);
+        return view('players.index', ['players' => $players, 'positions'=>$positions]);
     }
 
+    public function position(Request $request)
+    {
+        $players = Player::position($request->input('pos'))->get();
+        $positions = Player::allPositions()->pluck('players.position', 'players.position');
+        return view('players.index', ['players' => $players, 'positions'=>$positions]);
+    }    
     /**
      * Show the form for creating a new resource.
      *

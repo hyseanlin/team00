@@ -19,10 +19,12 @@ use App\Http\Controllers\TeamsController;
 Route::get('/', function () {
     return redirect('players');
 });
-// 顯示顯示所有球員資料
+// 顯示所有球員資料
 Route::get('players', [PlayersController::class, 'index'])->name('players.index');
-// 顯示顯示所有球員資料
+// 顯示資深球員資料
 Route::get('players/senior', [PlayersController::class, 'senior'])->name('players.senior');
+// 選定位置查詢球員
+Route::post('players/position', [PlayersController::class, 'position'])->name('players.position');
 // 顯示單一球員資料
 Route::get('players/{id}', [PlayersController::class, 'show'])->where('id', '[0-9]+')->name('players.show');
 // 修改單一球員表單
