@@ -20,7 +20,7 @@ class PlayersController extends Controller
         $players = Player::paginate(25);
         $positions = Player::allPositions()->pluck('players.position', 'players.position');
         // 把資料送給 view
-        return view('players.index', ['players' => $players, 'positions'=>$positions]);
+        return view('players.index', ['players' => $players, 'positions'=>$positions, 'selectedPosition'=>null]);
     }
 
     public function senior()
@@ -29,14 +29,15 @@ class PlayersController extends Controller
         $players = Player::senior()->paginate(25);
         $positions = Player::allPositions()->pluck('players.position', 'players.position');
         // 把資料送給 view
-        return view('players.index', ['players' => $players, 'positions'=>$positions]);
+        return view('players.index', ['players' => $players, 'positions'=>$positions, 'selectedPosition'=>null]);
     }
 
     public function position(Request $request)
     {
         $players = Player::position($request->input('pos'))->paginate(25);
         $positions = Player::allPositions()->pluck('players.position', 'players.position');
-        return view('players.index', ['players' => $players, 'positions'=>$positions]);
+        $selectedPosition = $request->input('pos');
+        return view('players.index', ['players' => $players, 'positions'=>$positions, 'selectedPosition'=>$selectedPosition]);
     }    
     /**
      * Show the form for creating a new resource.

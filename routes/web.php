@@ -24,7 +24,7 @@ Route::get('players', [PlayersController::class, 'index'])->name('players.index'
 // 顯示資深球員資料
 Route::get('players/senior', [PlayersController::class, 'senior'])->name('players.senior');
 // 選定位置查詢球員
-Route::post('players/position', [PlayersController::class, 'position'])->name('players.position');
+Route::get('players/position', [PlayersController::class, 'position'])->name('players.position');
 // 顯示單一球員資料
 Route::get('players/{id}', [PlayersController::class, 'show'])->where('id', '[0-9]+')->name('players.show');
 // 修改單一球員表單
