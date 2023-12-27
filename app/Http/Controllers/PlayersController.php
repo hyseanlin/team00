@@ -17,7 +17,7 @@ class PlayersController extends Controller
     public function index()
     {
         // 從 Model 拿資料
-        $players = Player::all();
+        $players = Player::paginate(25);
         $positions = Player::allPositions()->pluck('players.position', 'players.position');
         // 把資料送給 view
         return view('players.index', ['players' => $players, 'positions'=>$positions]);
@@ -26,7 +26,7 @@ class PlayersController extends Controller
     public function senior()
     {
         // 從 Model 拿特定條件下的資料
-        $players = Player::senior()->get();
+        $players = Player::senior()->paginate(25);
         $positions = Player::allPositions()->pluck('players.position', 'players.position');
         // 把資料送給 view
         return view('players.index', ['players' => $players, 'positions'=>$positions]);
@@ -34,7 +34,7 @@ class PlayersController extends Controller
 
     public function position(Request $request)
     {
-        $players = Player::position($request->input('pos'))->get();
+        $players = Player::position($request->input('pos'))->paginate(25);
         $positions = Player::allPositions()->pluck('players.position', 'players.position');
         return view('players.index', ['players' => $players, 'positions'=>$positions]);
     }    

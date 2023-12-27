@@ -58,4 +58,5 @@
         </tr>
     @endforeach
 </table>
+{{ $players->links() }}
 @endsection
