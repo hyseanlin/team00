@@ -19,6 +19,23 @@ class TeamsController extends Controller
         return view('teams.index')->with('teams', $teams);
     }
 
+    public function eastern()
+    {
+        // 從 Model 拿資料
+        $teams = Team::zone('Eastern Conference')->get();
+        // 把資料送給 view
+        return view('teams.index')->with('teams', $teams);
+    }
+
+
+    public function western()
+    {
+        // 從 Model 拿資料
+        $teams = Team::zone('Western Conference')->get();
+        // 把資料送給 view
+        return view('teams.index')->with('teams', $teams);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

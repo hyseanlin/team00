@@ -21,6 +21,15 @@ class PlayersController extends Controller
         return view('players.index')->with('players', $players);
     }
 
+    public function senior()
+    {
+        // 從 Model 拿特定條件下的資料
+        $players = Player::senior()->get();
+       
+        // 把資料送給 view
+        return view('players.index')->with('players', $players);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
