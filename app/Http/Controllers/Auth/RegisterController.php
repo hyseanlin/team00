@@ -68,7 +68,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role' => User::ROLE_USER,
+            'role' => User::ROLE_USER,  // 預設為一般使用者
         ]);
     }
 }
