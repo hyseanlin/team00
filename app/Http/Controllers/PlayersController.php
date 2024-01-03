@@ -141,6 +141,8 @@ class PlayersController extends Controller
      */
     public function edit($id)
     {
+        parent::edit($id);
+
         $player = Player::findOrFail($id);
         $teams = Team::orderBy('teams.id', 'asc')->pluck('teams.name', 'teams.id');
         $selected_tags = $player->team->id;
