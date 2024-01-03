@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlayersController;
 use App\Http\Controllers\TeamsController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,7 @@ Route::get('/', function () {
 Route::get('players', [PlayersController::class, 'index'])->name('players.index');
 // 顯示資深球員資料
 Route::get('players/senior', [PlayersController::class, 'senior'])->name('players.senior');
-// 顯示資深球員資料
+// 顯示本月球員資料
 Route::get('players/birthday', [PlayersController::class, 'birthday'])->name('players.birthday');
 // 選定位置查詢球員
 Route::get('players/position', [PlayersController::class, 'position'])->name('players.position');
@@ -64,3 +65,7 @@ Route::get('teams/{id}/edit', [TeamsController::class, 'edit'])->where('id', '[0
 Route::patch('teams/update/{id}', [TeamsController::class, 'update'])->where('id', '[0-9]+')->name('teams.update');
 // 儲存新球隊資料
 Route::post('teams/store', [TeamsController::class, 'store'])->name('teams.store');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
