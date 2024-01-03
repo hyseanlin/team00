@@ -1,4 +1,3 @@
-
 @extends('app')
 
 @section('title', 'NBA 網站 - 列出所有球員')
@@ -7,7 +6,9 @@
 
 @section('nba_contents')
 <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+    @can('admin')
     <a href="{{ route('players.create') }} ">新增球員</a>
+    @endcan
     <a href="{{ route('players.index') }} ">所有球員</a>
     <a href="{{ route('players.senior') }} ">資深球員</a>
     <a href="{{ route('players.birthday') }} ">本月生日球員</a>
@@ -16,13 +17,13 @@
         {!! Form::select('pos', $positions, $selectedPosition, ['class' => 'form-control']) !!}
         <input class="btn btn-default" type="submit" value="查詢" />
         @csrf
-    </form>    
+    </form>
     <form action="{{ url('players/nationality') }}" method='GET'>
         {!! Form::label('nationality', '選取國家：') !!}
         {!! Form::select('nationality', $nationalities, $selectedNationality, ['class' => 'form-control']) !!}
         <input class="btn btn-default" type="submit" value="查詢" />
         @csrf
-    </form>    
+    </form>
 </div>
 
 <table>
@@ -38,31 +39,39 @@
         <th>年資</th>
         <th>國籍</th>
         <th>操作1</th>
+        @can('admin')
         <th>操作2</th>
         <th>操作3</th>
+        @elsecan('manager')
+        <th>操作2</th>
+        @endcan
     </tr>
     @foreach ($players as $player)
-        <tr>
-            <td>{{ $player->id }}</td>
-            <td>{{ $player->name }}</td>
-            <td>{{ $player->team->name }}</td>
-            <td>{{ $player->onboarddate }}</td>
-            <td>{{ $player->birthdate }}</td>
-            <td>{{ $player->position }}</td>
-            <td>{{ $player->height }}</td>
-            <td>{{ $player->weight }}</td>
-            <td>{{ $player->year }}</td>
-            <td>{{ $player->nationality }}</td>
-            <td><a href="{{ route('players.show', ['id'=>$player->id]) }}">顯示</a></td>
-            <td><a href="{{ route('players.edit', ['id'=>$player->id]) }}">修改</a></td>    
-            <td>
-                <form action="{{ url('/players/delete', ['id' => $player->id]) }}" method="post">
-                    <input class="btn btn-default" type="submit" value="刪除" />
-                    @method('delete')
-                    @csrf
-                </form>
-            </td>
-        </tr>
+    <tr>
+        <td>{{ $player->id }}</td>
+        <td>{{ $player->name }}</td>
+        <td>{{ $player->team->name }}</td>
+        <td>{{ $player->onboarddate }}</td>
+        <td>{{ $player->birthdate }}</td>
+        <td>{{ $player->position }}</td>
+        <td>{{ $player->height }}</td>
+        <td>{{ $player->weight }}</td>
+        <td>{{ $player->year }}</td>
+        <td>{{ $player->nationality }}</td>
+        <td><a href="{{ route('players.show', ['id'=>$player->id]) }}">顯示</a></td>
+        @can('admin')
+        <td><a href="{{ route('players.edit', ['id'=>$player->id]) }}">修改</a></td>
+        <td>
+            <form action="{{ url('/players/delete', ['id' => $player->id]) }}" method="post">
+                <input class="btn btn-default" type="submit" value="刪除" />
+                @method('delete')
+                @csrf
+            </form>
+        </td>
+        @elsecan('manager')
+        <td><a href="{{ route('players.edit', ['id'=>$player->id]) }}">修改</a></td>
+        @endcan
+    </tr>
     @endforeach
 </table>
 {{ $players->withQueryString()->links() }}
