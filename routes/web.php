@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\OberservationsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,9 +22,4 @@ Route::get(
     }
 );
 
-Route::get(
-    '/sdgs',
-    function () {
-        return view('intro_sdgs'); // 引導至一份視圖(view)：welcome view
-    }
-);
+Route::get('observations', [OberservationsController::class, 'index']);
