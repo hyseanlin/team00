@@ -16,7 +16,8 @@ class OberservationsController extends Controller
     {
         //
         $observations = Oberservation::all();
-        return view('observations.index', compact('observations'));
+        //return view('observations.index', compact('observations'));
+        return view('observations.index')->with('observations', $observations);
     }
 
     /**

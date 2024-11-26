@@ -22,4 +22,4 @@ Route::get(
     }
 );
 
-Route::get('observations', [OberservationsController::class, 'index']);
+Route::get('observations', [OberservationsController::class, 'index'])->name('observations.index');
