@@ -16,6 +16,8 @@
                 <th>物種俗名</th>
                 <th>數量</th>
                 <th>單位</th>
+                <th>操作1</th>
+                <th>操作2</th>
                 <!---
                 <th>鑑定層級</th>
                 <th>物種界</th>
@@ -37,6 +39,8 @@
                 <td>{{ $observation->common_species_name }}</td>
                 <td>{{ $observation->quantity }}</td>
                 <td>{{ $observation->quantity_unit }}</td>
+                <td><a href="{{ route('observations.show', ['id' => $observation->id]) }}">顯示</a></td>
+                <td><a href="{{ route('observations.edit', ['id' => $observation->id]) }}">編輯</a></td>
                 <!--
                 <td>{{ $observation->identification_level }}</td>
                 <td>{{ $observation->kingdom_chinese_name }}</td>

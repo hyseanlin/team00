@@ -50,6 +50,8 @@ class OberservationsController extends Controller
     public function show($id)
     {
         //
+        $observation = Oberservation::findOrFail($id);
+        return view('observations.show')->with('observation', $observation);
     }
 
     /**
