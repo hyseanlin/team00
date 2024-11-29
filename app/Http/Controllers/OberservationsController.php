@@ -85,6 +85,9 @@ class OberservationsController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $observation = Oberservation::findOrFail($id);
+        $observation->delete();
+        return redirect('observations'); // 觸發一組路由 observations
     }
 }

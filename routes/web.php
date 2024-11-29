@@ -22,6 +22,15 @@ Route::get(
     }
 );
 
-Route::get('observations', [OberservationsController::class, 'index'])->name('observations.index');
-Route::get('observations/{id}', [OberservationsController::class, 'show'])->where('id', '[0-9]+')->name('observations.show');
-Route::get('observations/{id}/edit', [OberservationsController::class, 'edit'])->where('id', '[0-9]+')->name('observations.edit');
+Route::get('observations', [OberservationsController::class, 'index'])
+    ->name('observations.index');
+Route::get('observations/{id}', [OberservationsController::class, 'show'])
+    ->where('id', '[0-9]+')
+    ->name('observations.show');
+Route::get('observations/{id}/edit', [OberservationsController::class, 'edit'])
+    ->where('id', '[0-9]+')
+    ->name('observations.edit');
+Route::delete('observations/delete/{id}', [OberservationsController::class, 'destroy'])
+    ->where('id', '[0-9]+')
+    ->name('observations.destroy');
+

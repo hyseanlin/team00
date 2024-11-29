@@ -18,6 +18,7 @@
                 <th>單位</th>
                 <th>操作1</th>
                 <th>操作2</th>
+                <th>操作3</th>
                 <!---
                 <th>鑑定層級</th>
                 <th>物種界</th>
@@ -41,6 +42,13 @@
                 <td>{{ $observation->quantity_unit }}</td>
                 <td><a href="{{ route('observations.show', ['id' => $observation->id]) }}">顯示</a></td>
                 <td><a href="{{ route('observations.edit', ['id' => $observation->id]) }}">編輯</a></td>
+                <td>
+                    <form action="{{ url('/observations/delete', ['id' => $observation->id]) }}" method="post">
+                        <input class="btn btn-default" type="submit" value="刪除" />
+                        @method('delete')
+                        @csrf
+                    </form>
+                </td>
                 <!--
                 <td>{{ $observation->identification_level }}</td>
                 <td>{{ $observation->kingdom_chinese_name }}</td>
