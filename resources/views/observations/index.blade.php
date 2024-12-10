@@ -5,6 +5,7 @@
 @section('sdg_theme', '臺灣鯨豚族群調查計畫-生態調查標準資料')
 
 @section('sdg_contents')
+    <a href={{ route('observations.create') }}> 新增鯨豚族群生態調查資料 </a>
     <table border="1">
             <tr>
                 <th>計畫/案件名稱</th>

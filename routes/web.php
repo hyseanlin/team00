@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\OberservationsController;
+use App\Http\Controllers\ObservationsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,15 +22,26 @@ Route::get(
     }
 );
 
-Route::get('observations', [OberservationsController::class, 'index'])
+
+// 儲存一筆資料
+Route::post('observations/store', [ObservationsController::class, 'store'])
+    ->name('observations.store');
+# 新增表單
+Route::get('observations/create', [ObservationsController::class, 'create'])
+    ->name('observations.create');
+# 查詢資料
+Route::get('observations', [ObservationsController::class, 'index'])
     ->name('observations.index');
-Route::get('observations/{id}', [OberservationsController::class, 'show'])
+# 顯示特定一筆資料的詳細資料
+Route::get('observations/{id}', [ObservationsController::class, 'show'])
     ->where('id', '[0-9]+')
     ->name('observations.show');
-Route::get('observations/{id}/edit', [OberservationsController::class, 'edit'])
+# 編輯特定一筆資料
+Route::get('observations/{id}/edit', [ObservationsController::class, 'edit'])
     ->where('id', '[0-9]+')
     ->name('observations.edit');
-Route::delete('observations/delete/{id}', [OberservationsController::class, 'destroy'])
+# 刪除特定一筆資料
+Route::delete('observations/delete/{id}', [ObservationsController::class, 'destroy'])
     ->where('id', '[0-9]+')
     ->name('observations.destroy');
 

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Oberservation;
+use App\Models\Observation;
 
-class OberservationsController extends Controller
+class ObservationsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class OberservationsController extends Controller
     public function index()
     {
         //
-        $observations = Oberservation::all();
+        $observations = Observation::all();
         //return view('observations.index', compact('observations'));
         return view('observations.index')->with('observations', $observations);
     }
@@ -27,7 +27,7 @@ class OberservationsController extends Controller
      */
     public function create()
     {
-        //
+        return view("observations.create");
     }
 
     /**
@@ -38,7 +38,39 @@ class OberservationsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->only([
+            'project_name',
+            'year',
+            'month',
+            'day',
+            'survey_method',
+            'longitude',
+            'latitude',
+            'administrative_region',
+            'identification_level',
+            'common_species_name',
+            'original_species_name',
+            'verified_species_code',
+            'quantity',
+            'quantity_unit',
+            'kingdom',
+            'kingdom_chinese_name',
+            'phylum',
+            'phylum_chinese_name',
+            'class',
+            'class_chinese_name',
+            'order',
+            'order_chinese_name',
+            'family',
+            'family_chinese_name',
+            'genus',
+            'genus_chinese_name',
+        ]);
+        
+        $observation = Observation::create($data);
+        
+        return redirect('observations');
+        
     }
 
     /**
@@ -50,7 +82,7 @@ class OberservationsController extends Controller
     public function show($id)
     {
         //
-        $observation = Oberservation::findOrFail($id);
+        $observation = Observation::findOrFail($id);
         return view('observations.show')->with('observation', $observation);
     }
 
@@ -86,7 +118,7 @@ class OberservationsController extends Controller
     public function destroy($id)
     {
 
-        $observation = Oberservation::findOrFail($id);
+        $observation = Observation::findOrFail($id);
         $observation->delete();
         return redirect('observations'); // 觸發一組路由 observations
     }
