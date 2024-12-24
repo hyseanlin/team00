@@ -94,7 +94,8 @@ class ObservationsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $observation = Observation::findOrFail($id);
+        return view("observations.edit")->with('observation', $observation);
     }
 
     /**
@@ -106,7 +107,44 @@ class ObservationsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $observations = Observation::findOrFail($id);
+
+        $data = $request->only([
+            'project_name',
+            'year',
+            'month',
+            'day',
+            'survey_method',
+            'longitude',
+            'latitude',
+            'administrative_region',
+            'identification_level',
+            'common_species_name',
+            'original_species_name',
+            'verified_species_code',
+            'quantity',
+            'quantity_unit',
+            'kingdom',
+            'kingdom_chinese_name',
+            'phylum',
+            'phylum_chinese_name',
+            'class',
+            'class_chinese_name',
+            'order',
+            'order_chinese_name',
+            'family',
+            'family_chinese_name',
+            'genus',
+            'genus_chinese_name',
+        ]);
+
+        // Update the model's attributes
+        $observations->fill($data);
+
+        // Save the changes to the database
+        $observations->save();
+        
+        return redirect('observations');
     }
 
     /**

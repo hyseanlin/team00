@@ -40,6 +40,10 @@ Route::get('observations/{id}', [ObservationsController::class, 'show'])
 Route::get('observations/{id}/edit', [ObservationsController::class, 'edit'])
     ->where('id', '[0-9]+')
     ->name('observations.edit');
+// 修改資料
+Route::patch('observations/update/{id}', [ObservationsController::class, 'update'])
+    ->where('id', '[0-9]+')
+    ->name('observations.update');
 # 刪除特定一筆資料
 Route::delete('observations/delete/{id}', [ObservationsController::class, 'destroy'])
     ->where('id', '[0-9]+')
