@@ -9,6 +9,7 @@
 
 編輯特定一筆鯨豚族群調查表單
 
+@include('message.list')
 {!! Form::model($observation, ['method'=>'PATCH', 'action'=>['\App\Http\Controllers\ObservationsController@update', $observation->id]]) !!}
     @include('observations.form', ['submitButtonText'=>"修改調查計畫資料"])
 {!! Form::close() !!}

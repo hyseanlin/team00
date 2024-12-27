@@ -9,9 +9,9 @@
 
 新增鯨豚族群調查表單
 
+@include('message.list')
 {!! Form::open(['url' => 'observations/store']) !!}
     @include('observations.form', ['submitButtonText'=>"新增調查計畫資料"])
 {!! Form::close() !!}
-
 
 @endsection

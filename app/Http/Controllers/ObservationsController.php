@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateObservationRequest;
 use App\Models\Observation;
 
 class ObservationsController extends Controller
@@ -36,7 +37,7 @@ class ObservationsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateObservationRequest $request)
     {
         $data = $request->only([
             'project_name',
@@ -50,6 +51,7 @@ class ObservationsController extends Controller
             'identification_level',
             'common_species_name',
             'original_species_name',
+            'original_species_scientific_name',
             'verified_species_code',
             'quantity',
             'quantity_unit',
@@ -105,9 +107,9 @@ class ObservationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateObservationRequest $request, $id)
     {
-        $observations = Observation::findOrFail($id);
+        $observation = Observation::findOrFail($id);
 
         $data = $request->only([
             'project_name',
@@ -121,6 +123,7 @@ class ObservationsController extends Controller
             'identification_level',
             'common_species_name',
             'original_species_name',
+            'original_species_scientific_name',
             'verified_species_code',
             'quantity',
             'quantity_unit',
@@ -139,10 +142,10 @@ class ObservationsController extends Controller
         ]);
 
         // Update the model's attributes
-        $observations->fill($data);
+        $observation->fill($data);
 
         // Save the changes to the database
-        $observations->save();
+        $observation->save();
         
         return redirect('observations');
     }
