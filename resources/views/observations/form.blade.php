@@ -31,7 +31,8 @@
     {!! Form::text('administrative_region',null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
-    {!! Form::label('identification_level', null, ['class' => 'form-control']) !!}
+    {!! Form::label('identification_level', '鑑定級別：') !!}
+    {!! Form::text('identification_level',null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('common_species_name', '物種俗名：') !!}
@@ -54,7 +55,8 @@
     {!! Form::text('quantity', null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
-    {!! Form::label('quantity_unit', null, ['class' => 'form-control']) !!}
+    {!! Form::label('quantity_unit', '個體數量或範圍單位：') !!}
+    {!! Form::text('quantity_unit', null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('kingdom', '物種的界分類（如「Animalia」）	：') !!}
@@ -95,9 +97,6 @@
 <div class="form-group">
     {!! Form::label('family_chinese_name', '	物種科的中文名稱：') !!}
     {!! Form::text('family_chinese_name', null, ['class' => 'form-control']) !!}
-</div>
-<div class="form-group">
-    {!! Form::label('quantity_unit', null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('genus', '物種的屬分類：') !!}

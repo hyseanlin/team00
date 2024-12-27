@@ -23,6 +23,7 @@ class Observation extends Model
         'identification_level',
         'common_species_name',
         'original_species_name',
+        'original_species_scientific_name',
         'verified_species_code',
         'quantity',
         'quantity_unit',
