@@ -32,13 +32,13 @@ class CreateObservationRequest extends FormRequest
             'longitude' => 'required|numeric',
             'latitude' => 'required|numeric',
             'administrative_region' => 'required|string|min:2',
-            'identification_level' => 'required|string|min:2',
+            'identification_level' => 'required|string|min:1',
             'common_species_name' => 'required|string|min:2',
             'original_species_name' => 'required|string|min:2',
             'original_species_scientific_name' => 'string|min:2',
             'verified_species_code' => 'string|min:2',
-            'quantity' => 'string|min:2',
-            'quantity_uint' => 'string|min:2',
+            'quantity' => 'string|min:1',
+            'quantity_uint' => 'string|min:1',
             'kingdom' => 'required|string|min:2',
             'kingdom_chinese_name' => 'string|min:2',
             'phylum' => 'string|min:2',
@@ -87,26 +87,26 @@ class CreateObservationRequest extends FormRequest
             'administrative_region.min' => '行政區域至少需要 2 個字元。',
 
             'identification_level.required' => '鑑定級別是必填項。',
-            'identification_level.min' => '鑑定級別至少需要 2 個字元。',
+            'identification_level.min' => '鑑定級別至少需要 1 個字元。',
 
             'common_species_name.required' => '常見物種名稱是必填項。',
             'common_species_name.min' => '常見物種名稱至少需要 2 個字元。',
 
-            'original_species_name.string' => '原始物種必須是字串。',
+            'original_species_name.string' => '原始物種名稱必須是字串。',
             'original_species_name.required' => '原始物種名稱是必填項。',
             'original_species_name.min' => '原始物種名稱至少需要 2 個字元。',
 
             'original_species_scientific_name.string' => '原始物種學名必須是字串。',
             'original_species_scientific_name.min' => '原始物種學名至少需要 2 個字元。',
 
-            'verified_species_code.string' => '原始物種學名必須是字串。',
-            'verified_species_code.min' => '驗證物種代碼至少需要 2 個字元。',
+            'verified_species_code.string' => '校定物種必須是字串。',
+            'verified_species_code.min' => '校定物種代碼至少需要 2 個字元。',
 
-            'quantity.string' => '原始物種學名必須是字串。',
-            'quantity.min' => '數量至少需要 2 個字元。',
+            'quantity.string' => '數量或範圍必須是字串。',
+            'quantity.min' => '數量至少需要 1 個字元。',
 
-            'quantity_uint.string' => '原始物種學名必須是字串。',
-            'quantity_uint.min' => '數量單位至少需要 2 個字元。',
+            'quantity_uint.string' => '數量或範圍必須是字串。',
+            'quantity_uint.min' => '數量單位至少需要 1 個字元。',
 
             'kingdom.string' => '門必須是字串。',
             'kingdom.required' => '界是必填項。',
