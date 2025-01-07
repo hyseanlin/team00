@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateObservationRequest;
 use App\Models\Observation;
+use Illuminate\Support\Facades\Gate;
 
 class ObservationsController extends Controller
 {
@@ -96,6 +97,9 @@ class ObservationsController extends Controller
      */
     public function edit($id)
     {
+        if (Gate::allows('user'))
+            abort(401);
+
         $observation = Observation::findOrFail($id);
         return view("observations.edit")->with('observation', $observation);
     }
@@ -109,6 +113,9 @@ class ObservationsController extends Controller
      */
     public function update(CreateObservationRequest $request, $id)
     {
+        if (Gate::allows('user'))
+            abort(401);
+
         $observation = Observation::findOrFail($id);
 
         $data = $request->only([

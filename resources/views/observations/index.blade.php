@@ -5,7 +5,9 @@
 @section('sdg_theme', '臺灣鯨豚族群調查計畫-生態調查標準資料')
 
 @section('sdg_contents')
-    <a href={{ route('observations.create') }}> 新增鯨豚族群生態調查資料 </a>
+    @can("admin")
+        <a href={{ route('observations.create') }}> 新增鯨豚族群生態調查資料 </a>
+    @endcan
     <table border="1">
             <tr>
                 <th>計畫/案件名稱</th>
@@ -18,8 +20,12 @@
                 <th>數量</th>
                 <th>單位</th>
                 <th>操作1</th>
+                @can('admin')
                 <th>操作2</th>
                 <th>操作3</th>
+                @elsecan('manager')
+                <th>操作2</th>
+                @endcan
                 <!---
                 <th>鑑定層級</th>
                 <th>物種界</th>
@@ -42,6 +48,7 @@
                 <td>{{ $observation->quantity }}</td>
                 <td>{{ $observation->quantity_unit }}</td>
                 <td><a href="{{ route('observations.show', ['id' => $observation->id]) }}">顯示</a></td>
+            @can('admin')
                 <td><a href="{{ route('observations.edit', ['id' => $observation->id]) }}">編輯</a></td>
                 <td>
                     <form action="{{ url('/observations/delete', ['id' => $observation->id]) }}" method="post">
@@ -50,6 +57,9 @@
                         @csrf
                     </form>
                 </td>
+            @elsecan('manager')
+                <td><a href="{{ route('observations.edit', ['id' => $observation->id]) }}">編輯</a></td>
+            @endcan
                 <!--
                 <td>{{ $observation->identification_level }}</td>
                 <td>{{ $observation->kingdom_chinese_name }}</td>
